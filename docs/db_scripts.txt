@@ -1,0 +1,35 @@
+-- Hostname : localhost
+-- Port : 3306
+-- SID : medicaldb
+-- Username : testuser
+-- Password : password
+-- ___________________________________________________________________________
+
+CREATE TABLE USER_DETAILS 
+(
+	user_name VARCHAR(100) NOT NULL,
+	email VARCHAR(100) NOT NULL,
+	name VARCHAR(200) NOT NULL,
+	password VARCHAR(100) NOT NULL, 
+	CONSTRAINT unique_user_details_email UNIQUE (email),
+	CONSTRAINT pk_USER_DETAILS_user_name PRIMARY KEY (user_name)
+);
+
+CREATE TABLE PATIENT
+(
+	ssn VARCHAR(25) NOT NULL,
+	name VARCHAR(200) NOT NULL,
+	dob DATE,
+	CONSTRAINT pk_PATIENT_ssn PRIMARY KEY (ssn)
+);
+
+CREATE TABLE RADIOGRAPH
+(
+	user_name VARCHAR(100) NOT NULL,
+	ssn VARCHAR(25) NOT NULL,
+	description VARCHAR(500) NOT NULL,
+	reason VARCHAR(500) NOT NULL,
+	CONSTRAINT pk_RADIOGRAPH_user_name_and_ssn PRIMARY KEY (user_name, ssn),
+	FOREIGN KEY (user_name) REFERENCES USER_DETAILS(user_name),
+	FOREIGN KEY (ssn) REFERENCES PATIENT(ssn)
+);
