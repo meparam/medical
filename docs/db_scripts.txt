@@ -5,31 +5,37 @@
 -- Password : password
 -- ___________________________________________________________________________
 
-CREATE TABLE USER_DETAILS 
+CREATE TABLE user_details 
 (
 	user_name VARCHAR(100) NOT NULL,
 	email VARCHAR(100) NOT NULL,
 	name VARCHAR(200) NOT NULL,
 	password VARCHAR(100) NOT NULL, 
 	CONSTRAINT unique_user_details_email UNIQUE (email),
-	CONSTRAINT pk_USER_DETAILS_user_name PRIMARY KEY (user_name)
+	CONSTRAINT pk_user_details_user_name PRIMARY KEY (user_name)
 );
 
-CREATE TABLE PATIENT
+CREATE TABLE patient
 (
 	ssn VARCHAR(25) NOT NULL,
 	name VARCHAR(200) NOT NULL,
 	dob DATE,
-	CONSTRAINT pk_PATIENT_ssn PRIMARY KEY (ssn)
+	CONSTRAINT pk_patient_ssn PRIMARY KEY (ssn)
 );
 
-CREATE TABLE RADIOGRAPH
+CREATE TABLE radiograph
 (
 	user_name VARCHAR(100) NOT NULL,
 	ssn VARCHAR(25) NOT NULL,
 	description VARCHAR(500) NOT NULL,
 	reason VARCHAR(500) NOT NULL,
-	CONSTRAINT pk_RADIOGRAPH_user_name_and_ssn PRIMARY KEY (user_name, ssn),
-	FOREIGN KEY (user_name) REFERENCES USER_DETAILS(user_name),
-	FOREIGN KEY (ssn) REFERENCES PATIENT(ssn)
+	CONSTRAINT pk_radiograph_user_name_and_ssn PRIMARY KEY (user_name, ssn),
+	FOREIGN KEY (user_name) REFERENCES user_details(user_name),
+	FOREIGN KEY (ssn) REFERENCES patient(ssn)
 );
+
+insert into user_details values("raheem", "rahimpk123@yahoo.com", "Muhammad Raheem", "raheem123");
+insert into user_details values("eric", "eric@yahoo.com", "Dr Eric Larsson", "eric123");
+
+
+
