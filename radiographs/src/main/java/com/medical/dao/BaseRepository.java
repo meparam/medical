@@ -15,5 +15,7 @@ interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> {
      
     T findOne(ID id);
  
-    T save(T persisted);
+    T save(T persisted); // create or update
+    
+    boolean exists(ID primaryKey);
 }

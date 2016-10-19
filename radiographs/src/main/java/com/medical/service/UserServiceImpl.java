@@ -25,11 +25,11 @@ public class UserServiceImpl implements UserService{
 			
 	@Transactional(readOnly = true)
     @Override
-    public UserDTO findById(String userName) {
+    public UserDTO authenticateUser(String userName, String password) {
         
 		LOGGER.info("Finding user by id = " + userName);
 
-        User user = userRepository.findOne(userName);
+        User user = userRepository.authenticateUser(userName, password);
         
         LOGGER.info("Found user : " + user);
 

@@ -35,6 +35,9 @@ final public class PatientServiceImpl implements PatientService{
         
 		LOGGER.info("Creating a new patient record : "+ newPatientDTO);
 
+		if(exists(newPatientDTO.getSsn())){
+			return null;
+		}
         // convert dto to entity
         Patient patient = new Patient();
         patient.setName(newPatientDTO.getName());
@@ -47,6 +50,12 @@ final public class PatientServiceImpl implements PatientService{
 
         return PatientMapper.mapEntityToDTO(patient);
     }
+	
+	@Transactional
+	private boolean exists(String primaryKeySSN){
+		
+		return repository.exists(primaryKeySSN);
+	}
 
     
     /**

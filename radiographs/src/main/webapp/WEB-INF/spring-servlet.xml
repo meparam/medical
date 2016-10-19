@@ -13,8 +13,14 @@
 	<context:component-scan base-package="com.medical.dao"/>
     <context:component-scan base-package="com.medical.service"/>
     <context:component-scan base-package="com.medical.model"/>
+    <context:component-scan base-package="com.medical.validator"/>
 
 	<mvc:annotation-driven />
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="i18n/messages"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
 	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

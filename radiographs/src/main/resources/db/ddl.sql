@@ -1,10 +1,3 @@
--- Hostname : localhost
--- Port : 3306
--- SID : medicaldb
--- Username : testuser
--- Password : password
--- ___________________________________________________________________________
-
 CREATE TABLE user_details 
 (
 	user_name VARCHAR(100) NOT NULL,
@@ -28,16 +21,10 @@ CREATE TABLE radiograph
 	id int(10) unsigned NOT NULL AUTO_INCREMENT,
 	user_name VARCHAR(100) NOT NULL,
 	ssn VARCHAR(25) NOT NULL,
-    	reason VARCHAR(500) NOT NULL,
+    reason VARCHAR(500) NOT NULL,
 	description VARCHAR(500) NOT NULL,	
 	created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (id),
 	FOREIGN KEY (user_name) REFERENCES user_details(user_name),
 	FOREIGN KEY (ssn) REFERENCES patient(ssn)
 );
-
-insert into user_details values("raheem", "rahimpk123@yahoo.com", "Muhammad Raheem", "raheem123");
-insert into user_details values("eric", "eric@yahoo.com", "Dr Eric Larsson", "eric123");
-
-
-

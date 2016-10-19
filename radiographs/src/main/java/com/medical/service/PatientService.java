@@ -17,7 +17,7 @@ public interface PatientService {
      * @return               The information of the created patient entry.
      */
 	PatientDTO create(PatientDTO newPatient);
-    
+		    
     /**
      * Finds all patient records that are saved in the database.
      * @return

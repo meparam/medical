@@ -11,7 +11,7 @@
         <layout class="org.apache.log4j.PatternLayout">
             <param
                 name="ConversionPattern"
-                value="[uaq][%p][%d{dd-MMM-yyyy HH:mm:ss.SSS z}] %c{1}.%M(%L) | %m%n" />
+                value="[radiograph][%p][%d{dd-MMM-yyyy HH:mm:ss.SSS z}] %c{1}.%M(%L) | %m%n" />
         </layout>
     </appender>
     
